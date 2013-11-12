@@ -5,8 +5,10 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="14"
         android:targetSdkVersion="18" />
+
+	<uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +23,30 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.raven.drivenotext.SetMessageActivity"
+            android:label="@string/title_activity_set_message"
+            android:parentActivityName="com.raven.drivenotext.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.raven.drivenotext.HomeActivity" />
+        </activity>
+        <activity
+            android:name="com.raven.drivenotext.ViewMessageActivity"
+            android:label="@string/title_activity_view_message"
+            android:parentActivityName="com.raven.drivenotext.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.raven.drivenotext.HomeActivity" />
+        </activity>
+        <activity
+            android:name="com.raven.drivenotext.SendMessageActivity"
+            android:label="@string/title_activity_send_message"
+            android:parentActivityName="com.raven.drivenotext.HomeActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.raven.drivenotext.HomeActivity" />
         </activity>
     </application>
 
