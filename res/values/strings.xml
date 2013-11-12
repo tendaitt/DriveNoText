@@ -7,13 +7,14 @@
     <string name="title_activity_set_message">Set Message</string>
     <string name="title_activity_view_message">View Messages</string>
     <string name="title_activity_send_message">Send A Message</string>
-    
+
     <!-- Home Activity -->
     <string name="sendAMessageButton">Send Message</string>
     <string name="setAMessageButton">Set Message</string>
-    <string name="viewCurrentMessagesButton">View Message</string>
+    <string name="viewCurrentMessagesButton">Custom Message</string>
     <string name="activateSwitch">Activate</string>
-    
+    <string name="viewMissedMessages">Missed Messages</string>
+
     <!-- Set A Message Activity -->
     <string name="enterOwnMessage">Enter your message</string>
     <string name="useDefaultMessage">Or use a predefined message</string>
@@ -22,13 +23,16 @@
     <!-- Send A Message Activity -->
     <string name="enterPhoneNumber">Enter phone number</string>
     <string name="sendYourMessage">Send</string>
-    
+
     <!-- List Of Default Messages -->
-     <string-array name="default_messages_array">
+    <string-array name="default_messages_array">
         <item>I am driving, please call later</item>
         <item>At movies, please call later</item>
         <item>Im sleeping,please call later</item>
         <item>In a meeting, please call later</item>
         <item>In class, call later</item>
     </string-array>
+
+    <string name="title_activity_missed_messages">MissedMessagesActivity</string>
+
 </resources>

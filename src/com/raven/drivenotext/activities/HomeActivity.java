@@ -1,4 +1,6 @@
-package com.raven.drivenotext;
+package com.raven.drivenotext.activities;
+
+import com.raven.drivenotext.R;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -42,6 +44,11 @@ public class HomeActivity extends Activity {
 		startActivity(gotToViewMessage);
 	}
 	
+	public void viewMissedMessages(View view){
+		Intent goToMissedMessages = new Intent(this, MissedMessagesActivity.class);
+		startActivity(goToMissedMessages);
+		
+	}
 	public void switchOnOff(View view){
 		activationSwitch = (Switch) findViewById(R.id.driveNoTextSwitch);
 		if(activationSwitch.isChecked()){

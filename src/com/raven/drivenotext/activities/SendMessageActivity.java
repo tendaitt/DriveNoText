@@ -1,40 +1,34 @@
-package com.raven.drivenotext;
+package com.raven.drivenotext.activities;
 
+import com.raven.drivenotext.R;
 
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.NavUtils;
+import android.app.Activity;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.EditText;
 import android.widget.Toast;
+import android.support.v4.app.NavUtils;
+import android.telephony.SmsManager;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.content.Intent;
+import android.os.Build;
 
-public class SetMessageActivity extends Activity {
- private Spinner messageSpinner;
+public class SendMessageActivity extends Activity {
+	private EditText messageEditText;
+	private EditText phoneNumberEditText;
+	private String sms;
+	private String phoneNumber;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_set_message);
+		setContentView(R.layout.activity_send_message);
 		// Show the Up button in the action bar.
 		setupActionBar();
-	
-				messageSpinner = (Spinner) findViewById(R.id.defaultMessagesSpinner);
-
-				// Create an ArrayAdapter using the string array and a default spinner layout
-				ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.default_messages_array, android.R.layout.simple_spinner_item);
-
-				// Specify the layout to use when the list of choices appears
-				adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-				// Apply the adapter to the spinner
-				messageSpinner.setAdapter(adapter);
 	}
 
 	/**
@@ -50,7 +44,7 @@ public class SetMessageActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.set_message, menu);
+		getMenuInflater().inflate(R.menu.send_message, menu);
 		return true;
 	}
 
@@ -70,15 +64,32 @@ public class SetMessageActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@SuppressLint("ShowToast")
-	public void setMessage(View view){
-		Toast toast = Toast.makeText(getApplicationContext(), "Your message has been set! :)", 3);
+	public void sendMessage(View view){
+		messageEditText = (EditText) findViewById(R.id.messageToBeSentTextView);
+		phoneNumberEditText = (EditText) findViewById(R.id.phoneNumberEditText);
+		sms = messageEditText.getText().toString();
+		phoneNumber = phoneNumberEditText.getText().toString();
+		
+		
+		try{
+		SmsManager smsManager = SmsManager.getDefault();
+		smsManager.sendTextMessage(phoneNumber, null, sms, null, null);
+		Toast toast = Toast.makeText(getApplicationContext(), "Message Sent!", 3);
 		toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
 		toast.show(); 
-		Intent goBackHome = new Intent(this,HomeActivity.class);
+		}
+		catch(Exception e){
+			Toast toast = Toast.makeText(getApplicationContext(), "Message Sending Failed!", 3);
+			toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
+			toast.show(); 
+			e.printStackTrace();
+		}
+		
+		
+		Intent goBackHome = new Intent(this, HomeActivity.class);
 		startActivity(goBackHome);
 		
 	}
-
 }
