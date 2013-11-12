@@ -3,11 +3,11 @@
 
     <string name="app_name">No Text While Driving</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_set_message">Set Message</string>
     <string name="title_activity_view_message">View Messages</string>
     <string name="title_activity_send_message">Send A Message</string>
-
+    <string name="title_activity_missed_messages">Missed Messages</string>
+    
     <!-- Home Activity -->
     <string name="sendAMessageButton">Send Message</string>
     <string name="setAMessageButton">Set Message</string>
@@ -24,6 +24,13 @@
     <string name="enterPhoneNumber">Enter phone number</string>
     <string name="sendYourMessage">Send</string>
 
+    <!-- Missed Message Activity -->
+    <string name="clearList">Clear</string>
+    <string name="confirmation"> OK</string>
+    
+    <!-- View Set Message -->
+    <string name="customMessage"> Your Custom Message</string>
+    
     <!-- List Of Default Messages -->
     <string-array name="default_messages_array">
         <item>I am driving, please call later</item>
@@ -33,6 +40,5 @@
         <item>In class, call later</item>
     </string-array>
 
-    <string name="title_activity_missed_messages">MissedMessagesActivity</string>
 
 </resources>

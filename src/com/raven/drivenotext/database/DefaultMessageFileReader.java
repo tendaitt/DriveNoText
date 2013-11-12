@@ -24,6 +24,15 @@ public class DefaultMessageFileReader {
 		this.context = context;
 	}
 
+	public DefaultMessageFileReader(Context applicationContext) {
+		this.context = applicationContext;
+		this.fileName = "custom_message";
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
 	public void storeFile() {
 		try {
 			fos = context.openFileOutput(fileName, Context.MODE_PRIVATE);
@@ -42,7 +51,7 @@ public class DefaultMessageFileReader {
 		}
 	}
 
-	public String retrievFile() {
+	public String retrieveFile() {
 		try {
 			fis = context.openFileInput(fileName);
 		} catch (FileNotFoundException e1) {
@@ -59,8 +68,8 @@ public class DefaultMessageFileReader {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
-		return sb.toString();
+		String msg = sb.toString();
+		return msg;
 
 	}
 }

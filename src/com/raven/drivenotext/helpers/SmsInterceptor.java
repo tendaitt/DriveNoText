@@ -1,12 +1,17 @@
 package com.raven.drivenotext.helpers;
 
 import android.content.BroadcastReceiver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
 import android.widget.Toast;
+
+import com.raven.drivenotext.database.MissedMessageReaderContract.MissedMessageEntry;
+import com.raven.drivenotext.database.MissedMessageSQLHelper;
 
 public class SmsInterceptor extends BroadcastReceiver {
 	final SmsManager sms = SmsManager.getDefault();
@@ -37,6 +42,8 @@ public class SmsInterceptor extends BroadcastReceiver {
 					Toast toast = Toast.makeText(context, "senderNum: "
 							+ senderNum + ", message: " + message, duration);
 					toast.show();
+					
+					storeMessage(senderNum,message,context);
 
 				}
 			} 
@@ -47,5 +54,23 @@ public class SmsInterceptor extends BroadcastReceiver {
 		}
 
 	}
+	
+	public void storeMessage(String phoneNumber, String message,Context context){
+		
+				//update database
+				MissedMessageSQLHelper dbHelper = new MissedMessageSQLHelper(context, message, null, 0);
+				SQLiteDatabase missedMessageDb = dbHelper.getWritableDatabase();
+				//map of values
+				ContentValues values = new ContentValues();
+				values.put(MissedMessageEntry.COLUMN_MESSAGE_BODY, message);
+				values.put(MissedMessageEntry.COLUMN_PHONE_NUMBER, phoneNumber);
+
+				//Insert the new row
+				@SuppressWarnings("unused")
+				long newRowId;
+				newRowId = missedMessageDb.insert(MissedMessageEntry.TABLE_NAME, null, values);
+		
+	}
+	
 
 }

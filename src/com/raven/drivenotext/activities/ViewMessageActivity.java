@@ -1,16 +1,21 @@
 package com.raven.drivenotext.activities;
 
-import com.raven.drivenotext.R;
-
-import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.widget.TextView;
+
+import com.raven.drivenotext.R;
+import com.raven.drivenotext.database.DefaultMessageFileReader;
 
 public class ViewMessageActivity extends Activity {
+	
+	private TextView setMessageView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,13 @@ public class ViewMessageActivity extends Activity {
 		setContentView(R.layout.activity_view_message);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		DefaultMessageFileReader messageReader = new DefaultMessageFileReader(getApplicationContext());
+		Log.i("FILE NAME", messageReader.getFileName());
+		String setMessage = messageReader.retrieveFile();
+		
+		setMessageView = (TextView) findViewById(R.id.setMessageView);
+		setMessageView.setText(setMessage);
 	}
 
 	/**

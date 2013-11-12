@@ -1,7 +1,7 @@
 package com.raven.drivenotext.activities;
 
-
 import com.raven.drivenotext.R;
+import com.raven.drivenotext.database.DefaultMessageFileReader;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -15,28 +15,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class SetMessageActivity extends Activity {
- private Spinner messageSpinner;
+	private Spinner messageSpinner;
+	private EditText messageTextView;
+	private String message;
+	private String defaultMessage;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_message);
 		// Show the Up button in the action bar.
 		setupActionBar();
-	
-				messageSpinner = (Spinner) findViewById(R.id.defaultMessagesSpinner);
 
-				// Create an ArrayAdapter using the string array and a default spinner layout
-				ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.default_messages_array, android.R.layout.simple_spinner_item);
+		messageSpinner = (Spinner) findViewById(R.id.defaultMessagesSpinner);
+		messageTextView = (EditText) findViewById(R.id.customMessageTextView);
+		// Create an ArrayAdapter using the string array and a default spinner
+		// layout
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.default_messages_array,
+				android.R.layout.simple_spinner_item);
 
-				// Specify the layout to use when the list of choices appears
-				adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Specify the layout to use when the list of choices appears
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-				// Apply the adapter to the spinner
-				messageSpinner.setAdapter(adapter);
+		// Apply the adapter to the spinner
+		messageSpinner.setAdapter(adapter);
 	}
 
 	/**
@@ -72,15 +80,28 @@ public class SetMessageActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@SuppressLint("ShowToast")
-	public void setMessage(View view){
-		Toast toast = Toast.makeText(getApplicationContext(), "Your message has been set! :)", 3);
-		toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
-		toast.show(); 
-		Intent goBackHome = new Intent(this,HomeActivity.class);
-		startActivity(goBackHome);
+	public void setMessage(View view) {
 		
+		message = messageTextView.getText().toString();
+		defaultMessage = messageSpinner.getSelectedItem().toString();
+		
+		DefaultMessageFileReader fileReader;
+		if(!message.isEmpty()){
+			fileReader = new DefaultMessageFileReader(getApplicationContext(), message);
+			fileReader.storeFile();
+		}
+		else{
+			fileReader = new DefaultMessageFileReader(getApplicationContext(), defaultMessage);
+			fileReader.storeFile();
+		}
+		Toast toast = Toast.makeText(getApplicationContext(),"Message Set!", 3);
+		toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
+		toast.show();
+		Intent goBackHome = new Intent(this, HomeActivity.class);
+		startActivity(goBackHome);
+
 	}
 
 }

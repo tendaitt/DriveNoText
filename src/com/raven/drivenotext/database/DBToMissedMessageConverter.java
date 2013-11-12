@@ -17,7 +17,7 @@ public class DBToMissedMessageConverter {
 	
 	
 	public DBToMissedMessageConverter(Context context){
-		this.missedMessageDbHelper = new MissedMessageSQLHelper(context, "", null, 0);
+		this.missedMessageDbHelper = new MissedMessageSQLHelper(context,null,null,0);
 		this.missedMessageDb = missedMessageDbHelper.getReadableDatabase();
 		this.missedMessagesList = new ArrayList<MissedMessage>();
 	}

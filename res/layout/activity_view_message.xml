@@ -1,4 +1,4 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,5 +9,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ViewMessageActivity" >
 
+    <TextView
+        android:id="@+id/setMessageView"
+        android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.89" />
 
-</RelativeLayout>
+</LinearLayout>

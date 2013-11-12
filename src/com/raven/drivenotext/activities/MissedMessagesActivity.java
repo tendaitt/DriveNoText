@@ -1,12 +1,18 @@
 package com.raven.drivenotext.activities;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.raven.drivenotext.R;
+import com.raven.drivenotext.database.DBToMissedMessageConverter;
+import com.raven.drivenotext.helpers.MissedMessage;
 
 public class MissedMessagesActivity extends Activity {
 
@@ -16,6 +22,13 @@ public class MissedMessagesActivity extends Activity {
 		setContentView(R.layout.activity_missed_messages);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		DBToMissedMessageConverter missedMessageConverter = new DBToMissedMessageConverter(getApplicationContext());
+		ArrayList<MissedMessage> missedMessages = missedMessageConverter.convertToMissedMessage();
+		ListView missedMessageListView = (ListView) findViewById(R.id.missedMessageListView);
+		ArrayAdapter<MissedMessage> arrayAdapter = new 
+							ArrayAdapter<MissedMessage>(this,android.R.layout.simple_list_item_1, missedMessages);
+		         missedMessageListView.setAdapter(arrayAdapter); 
 	}
 
 	/**
