@@ -7,7 +7,7 @@
     <string name="title_activity_view_message">View Messages</string>
     <string name="title_activity_send_message">Send A Message</string>
     <string name="title_activity_missed_messages">Missed Messages</string>
-    
+
     <!-- Home Activity -->
     <string name="sendAMessageButton">Send Message</string>
     <string name="setAMessageButton">Set Message</string>
@@ -24,14 +24,16 @@
     <!-- Send A Message Activity -->
     <string name="enterPhoneNumber">Enter phone number</string>
     <string name="sendYourMessage">Send</string>
+    <string name="edit">Edit</string>
+    <string name="back">Back</string>
 
     <!-- Missed Message Activity -->
     <string name="clearList">Clear</string>
     <string name="confirmation"> OK</string>
-    
+
     <!-- View Set Message -->
     <string name="customMessage"> Your Custom Message</string>
-    
+
     <!-- List Of Default Messages -->
     <string-array name="default_messages_array">
         <item></item>
@@ -41,6 +43,5 @@
         <item>In a meeting, please call later</item>
         <item>In class, call later</item>
     </string-array>
-
 
 </resources>

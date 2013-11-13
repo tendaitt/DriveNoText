@@ -25,15 +25,22 @@ public class SetMessageActivity extends Activity {
 	private String message;
 	private String defaultMessage;
 
+	private Intent intent;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_message);
 		// Show the Up button in the action bar.
 		setupActionBar();
-
+		intent = getIntent();
+		String editMessage = intent.getExtras().getString("editMessage");
 		messageSpinner = (Spinner) findViewById(R.id.defaultMessagesSpinner);
 		messageTextView = (EditText) findViewById(R.id.customMessageTextView);
+		
+		if(!editMessage.equalsIgnoreCase("You haven't set a message yet!")){
+			messageTextView.setText(editMessage);
+		}
 		// Create an ArrayAdapter using the string array and a default spinner
 		// layout
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(

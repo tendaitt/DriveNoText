@@ -2,12 +2,14 @@ package com.raven.drivenotext.activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.raven.drivenotext.R;
@@ -23,6 +25,7 @@ import com.raven.drivenotext.database.DefaultMessageFileReader;
 public class ViewMessageActivity extends Activity {
 	
 	private TextView setMessageView;
+	private String setMessage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class ViewMessageActivity extends Activity {
 		
 		DefaultMessageFileReader messageReader = new DefaultMessageFileReader(getApplicationContext());
 		Log.i("FILE NAME", messageReader.getFileName());
-		String setMessage = messageReader.retrieveFile();
+		setMessage = messageReader.retrieveFile();
 		
 		setMessageView = (TextView) findViewById(R.id.setMessageView);
 		setMessageView.setText(setMessage);
@@ -73,4 +76,15 @@ public class ViewMessageActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void editResponse(View view){
+		Intent goToSetMessage = new Intent(this, SetMessageActivity.class);
+		goToSetMessage.putExtra("editMessage", setMessage);
+		startActivity(goToSetMessage);
+	}
+	
+	public void back(View view){
+		Intent i = new Intent(this, HomeActivity.class);
+		startActivity(i);
+		
+	}
 }
