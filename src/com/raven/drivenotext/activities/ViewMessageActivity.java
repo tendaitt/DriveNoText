@@ -12,7 +12,14 @@ import android.widget.TextView;
 
 import com.raven.drivenotext.R;
 import com.raven.drivenotext.database.DefaultMessageFileReader;
-
+/**
+ * 
+ * @author Tendai T.T. Mudyiwa
+ * @version November 12 2013
+ * 
+ * Implements the class for viewing the set message
+ *
+ */
 public class ViewMessageActivity extends Activity {
 	
 	private TextView setMessageView;

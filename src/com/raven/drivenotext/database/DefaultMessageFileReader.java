@@ -8,7 +8,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import android.content.Context;
-
+/**
+ * 
+ * @author Tendai T.T. Mudyiwa
+ * @version November 12 2013
+ *
+ * DefaultMessageFileReader provides the methods that enable
+ * reading and writing files in the local storage
+ */
 public class DefaultMessageFileReader {
 
 	private FileOutputStream fos;
@@ -63,6 +70,7 @@ public class DefaultMessageFileReader {
 		String line;
 		try {
 			while ((line = bufferedReader.readLine()) != null) {
+
 				sb.append(line);
 			}
 		} catch (IOException e) {

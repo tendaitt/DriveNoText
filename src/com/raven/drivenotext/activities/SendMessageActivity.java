@@ -16,7 +16,12 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
-
+/**
+ * 
+ * @author Tendai T.T. Mudyiwa
+ * @version November 12 2013
+ *
+ */
 public class SendMessageActivity extends Activity {
 	private EditText messageEditText;
 	private EditText phoneNumberEditText;

@@ -8,7 +8,14 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.raven.drivenotext.database.MissedMessageReaderContract.MissedMessageEntry;
 import com.raven.drivenotext.helpers.MissedMessage;
-
+/**
+ * 
+ * @author Tendai T.T. Mudyiwa
+ * @version November 12 2013
+ * 
+ * DBToMissedMessageConverter converts the rows in the database
+ * tables into MissedMessage objects
+ */
 public class DBToMissedMessageConverter {
 
 	private MissedMessageSQLHelper missedMessageDbHelper;
@@ -46,6 +53,7 @@ public class DBToMissedMessageConverter {
 		return missedMessagesList;
 	}
 	
+	@Override
 	public String toString(){
 		String messages = "";
 		

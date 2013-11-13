@@ -7,6 +7,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.raven.drivenotext.database.MissedMessageReaderContract.MissedMessageEntry;
 
+/**
+ * 
+ * @author Tendai T.T. Mudyiwa
+ * @version November 12 2013
+ * 
+ * MissedMessageSQLHelper enables the application to access
+ * and utilize a SQLite database
+ *
+ */
 public class MissedMessageSQLHelper extends SQLiteOpenHelper {
 
 	private static final String TEXT_TYPE = " TEXT";

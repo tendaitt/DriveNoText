@@ -13,7 +13,15 @@ import android.widget.ListView;
 import com.raven.drivenotext.R;
 import com.raven.drivenotext.database.DBToMissedMessageConverter;
 import com.raven.drivenotext.helpers.MissedMessage;
-
+/**
+ * 
+ * @author Tendai T.T. Mudyiwa
+ * @version November 12 2013
+ * 
+ * Implements the code for the view that displays all the
+ * missed messages
+ *
+ */
 public class MissedMessagesActivity extends Activity {
 
 	@Override

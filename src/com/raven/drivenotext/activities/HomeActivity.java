@@ -11,7 +11,13 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Switch;
 import android.widget.Toast;
-
+/**
+ * 
+ * @author Tendai T.T. Mudyiwa
+ * @version November 12 2013
+ *
+ *Implements the code for the Home pages
+ */
 @SuppressLint("ShowToast")
 public class HomeActivity extends Activity {
 
