@@ -29,6 +29,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:hint="@string/enterOwnMessage"
+        android:inputType="textAutoComplete"
         android:lines="4"
         android:ems="10" >
     </EditText>

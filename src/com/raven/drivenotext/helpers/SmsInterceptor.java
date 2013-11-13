@@ -24,6 +24,7 @@ import com.raven.drivenotext.database.MissedMessageSQLHelper;
  */
 public class SmsInterceptor extends BroadcastReceiver {
 	final SmsManager sms = SmsManager.getDefault();
+	public static boolean INTERCEPT = false;
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -46,8 +47,11 @@ public class SmsInterceptor extends BroadcastReceiver {
 					String senderNum = phoneNumber;
 					String message = currentMessage.getDisplayMessageBody();
 
-					storeMessage(senderNum, message, context);
-					respondToMessage(senderNum, context);
+					if(INTERCEPT){
+						storeMessage(senderNum, message, context);
+						respondToMessage(senderNum, context);
+					}
+				
 				}
 			}
 

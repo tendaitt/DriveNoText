@@ -18,7 +18,8 @@
         android:layout_marginTop="50dp"
         android:hint="@string/enterOwnMessage"
         android:lines="4"
-        android:ems="10" >
+        android:ems="10"
+        android:inputType="textAutoComplete" >
     </EditText>
 
     <TextView

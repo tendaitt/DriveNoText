@@ -84,16 +84,20 @@ public class SetMessageActivity extends Activity {
 	@SuppressLint("ShowToast")
 	public void setMessage(View view) {
 		
-		message = messageTextView.getText().toString();
-		defaultMessage = messageSpinner.getSelectedItem().toString();
+		message = messageTextView.getText().toString().trim();
+		defaultMessage = messageSpinner.getSelectedItem().toString().trim();
 		
 		DefaultMessageFileReader fileReader;
-		if(!message.isEmpty()){
+		if(!message.isEmpty() ){
 			fileReader = new DefaultMessageFileReader(getApplicationContext(), message);
 			fileReader.storeFile();
 		}
-		else{
+		else if(!defaultMessage.isEmpty()){
 			fileReader = new DefaultMessageFileReader(getApplicationContext(), defaultMessage);
+			fileReader.storeFile();
+		}
+		else{
+			fileReader = new DefaultMessageFileReader(getApplicationContext(), "You haven't set a message yet!");
 			fileReader.storeFile();
 		}
 		Toast toast = Toast.makeText(getApplicationContext(),"Message Set!", 3);

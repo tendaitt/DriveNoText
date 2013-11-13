@@ -5,51 +5,57 @@
     android:background="#F9FFFF"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/viewMissedMessagesButton"
-         android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:text="@string/viewMissedMessages"
-        android:onClick="viewMissedMessages" />
-    
-     <Button
-        android:id="@+id/setMessageButton"
-         android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:text="@string/setAMessageButton" 
-        android:onClick="setAMessage"/>
-    
-    <Button
-        android:id="@+id/sendMessageButton"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:text="@string/sendAMessageButton"
-        android:onClick="sendAMessage" />
-
-   
-
-    <Button
-        android:id="@+id/viewCurrentMessageButton"
-         android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="40dp"
-        android:text="@string/viewCurrentMessagesButton"
-        android:onClick="viewCurrentMessage" />
-
     <Switch
         android:id="@+id/driveNoTextSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:text="@string/activateSwitch"
         android:onClick="switchOnOff" />
+    
+    <Button
+        android:id="@+id/viewMissedMessagesButton"
+         android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="@string/viewMissedMessages"
+        android:onClick="viewMissedMessages" />
+    
+     <Button
+        android:id="@+id/setMessageButton"
+         android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="@string/setAMessageButton" 
+        android:onClick="setAMessage"/>
+    
+    <Button
+        android:id="@+id/sendMessageButton"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="@string/sendAMessageButton"
+        android:onClick="sendAMessage" />
 
+    <Button
+        android:id="@+id/viewCurrentMessageButton"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:onClick="viewCurrentMessage"
+        android:text="@string/viewCurrentMessagesButton" />
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="@string/exit"
+        android:onClick="exitApp" />
 </LinearLayout>

@@ -1,6 +1,7 @@
 package com.raven.drivenotext.activities;
 
 import com.raven.drivenotext.R;
+import com.raven.drivenotext.helpers.SmsInterceptor;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -61,13 +62,18 @@ public class HomeActivity extends Activity {
 			Toast toast = Toast.makeText(getApplicationContext(), "DriveNoText Has Been Activated", 3);
 			toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
 			toast.show(); 
+			SmsInterceptor.INTERCEPT = true;
 		}
 		else{
 			Toast toast = Toast.makeText(getApplicationContext(), "DriveNoText Has Been Deactivated", 3);
 			toast.setGravity(Gravity.CENTER|Gravity.CENTER, 0, 0);
 			toast.show(); 
+			SmsInterceptor.INTERCEPT = false;
 		}
-		
-		
+	}
+	
+	public void exitApp(View view){
+		finish();
+		System.exit(0);
 	}
 }

@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9FFFF"
     android:baselineAligned="false"
     android:orientation="vertical"
     tools:context=".MissedMessagesActivity" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-         >
+        android:layout_height="wrap_content" >
 
         <Button
             android:id="@+id/clearListButton"
@@ -17,16 +17,16 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            android:text="@string/clearList"
-            android:onClick="clearList" />
+            android:onClick="clearList"
+            android:text="@string/clearList" />
 
         <Button
             android:id="@+id/listSeenConfirmation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
-            android:text="@string/confirmation"
-            android:onClick="listSeen" />
+            android:onClick="listSeen"
+            android:text="@string/confirmation" />
     </LinearLayout>
 
     <ListView

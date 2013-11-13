@@ -3,15 +3,20 @@ package com.raven.drivenotext.activities;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.raven.drivenotext.R;
 import com.raven.drivenotext.database.DBToMissedMessageConverter;
+import com.raven.drivenotext.database.MissedMessageReaderContract.MissedMessageEntry;
+import com.raven.drivenotext.database.MissedMessageSQLHelper;
 import com.raven.drivenotext.helpers.MissedMessage;
 /**
  * 
@@ -30,6 +35,7 @@ public class MissedMessagesActivity extends Activity {
 		setContentView(R.layout.activity_missed_messages);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
 		
 		DBToMissedMessageConverter missedMessageConverter = new DBToMissedMessageConverter(getApplicationContext());
 		ArrayList<MissedMessage> missedMessages = missedMessageConverter.convertToMissedMessage();
@@ -72,4 +78,22 @@ public class MissedMessagesActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void listSeen(View view){
+		Intent goBackHome = new Intent(this, HomeActivity.class);
+		startActivity(goBackHome);
+	}
+	
+	public void clearList(View view){
+		//clear db
+		MissedMessageSQLHelper dbHelper = new MissedMessageSQLHelper(getApplicationContext(), null, null, 0);
+		SQLiteDatabase missedMessagesDb = dbHelper.getReadableDatabase();
+		missedMessagesDb.delete(MissedMessageEntry.TABLE_NAME, null, null);
+		
+		//clear screen
+		ArrayList<String> blank = new ArrayList<String>();
+		ListView missedMessageListView = (ListView) findViewById(R.id.missedMessageListView);
+		ArrayAdapter<String> arrayAdapter = new 
+							ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, blank);
+		         missedMessageListView.setAdapter(arrayAdapter); 
+	}
 }

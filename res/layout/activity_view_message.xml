@@ -13,6 +13,7 @@
         android:id="@+id/setMessageView"
         android:layout_width="0dip"
         android:layout_height="wrap_content"
-        android:layout_weight="0.89" />
+        android:layout_weight="0.89"
+        android:textSize="22sp" />
 
 </LinearLayout>

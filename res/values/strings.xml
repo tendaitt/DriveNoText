@@ -14,6 +14,7 @@
     <string name="viewCurrentMessagesButton">Custom Message</string>
     <string name="activateSwitch">Activate</string>
     <string name="viewMissedMessages">Missed Messages</string>
+    <string name="exit">Exit</string>
 
     <!-- Set A Message Activity -->
     <string name="enterOwnMessage">Enter your message</string>
@@ -33,6 +34,7 @@
     
     <!-- List Of Default Messages -->
     <string-array name="default_messages_array">
+        <item></item>
         <item>I am driving, please call later</item>
         <item>At movies, please call later</item>
         <item>Im sleeping,please call later</item>
