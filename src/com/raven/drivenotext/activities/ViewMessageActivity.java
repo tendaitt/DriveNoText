@@ -26,6 +26,7 @@ public class ViewMessageActivity extends Activity {
 	
 	private TextView setMessageView;
 	private String setMessage;
+	public static boolean EDIT_ACTIVATED = false;;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,7 @@ public class ViewMessageActivity extends Activity {
 
 	public void editResponse(View view){
 		Intent goToSetMessage = new Intent(this, SetMessageActivity.class);
+		EDIT_ACTIVATED  = true;
 		goToSetMessage.putExtra("editMessage", setMessage);
 		startActivity(goToSetMessage);
 	}

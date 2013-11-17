@@ -26,20 +26,24 @@ public class SetMessageActivity extends Activity {
 	private String defaultMessage;
 
 	private Intent intent;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_set_message);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		intent = getIntent();
-		String editMessage = intent.getExtras().getString("editMessage");
+
 		messageSpinner = (Spinner) findViewById(R.id.defaultMessagesSpinner);
 		messageTextView = (EditText) findViewById(R.id.customMessageTextView);
-		
-		if(!editMessage.equalsIgnoreCase("You haven't set a message yet!")){
-			messageTextView.setText(editMessage);
+
+		if (ViewMessageActivity.EDIT_ACTIVATED) {
+
+			intent = getIntent();
+			String editMessage = intent.getExtras().getString("editMessage");
+			if (!editMessage.equalsIgnoreCase("You haven't set a message yet!")) {
+				messageTextView.setText(editMessage);
+			}
 		}
 		// Create an ArrayAdapter using the string array and a default spinner
 		// layout
@@ -90,24 +94,26 @@ public class SetMessageActivity extends Activity {
 
 	@SuppressLint("ShowToast")
 	public void setMessage(View view) {
-		
+
 		message = messageTextView.getText().toString().trim();
 		defaultMessage = messageSpinner.getSelectedItem().toString().trim();
-		
+
 		DefaultMessageFileReader fileReader;
-		if(!message.isEmpty() ){
-			fileReader = new DefaultMessageFileReader(getApplicationContext(), message);
+		if (!message.isEmpty()) {
+			fileReader = new DefaultMessageFileReader(getApplicationContext(),
+					message);
+			fileReader.storeFile();
+		} else if (!defaultMessage.isEmpty()) {
+			fileReader = new DefaultMessageFileReader(getApplicationContext(),
+					defaultMessage);
+			fileReader.storeFile();
+		} else {
+			fileReader = new DefaultMessageFileReader(getApplicationContext(),
+					"You haven't set a message yet!");
 			fileReader.storeFile();
 		}
-		else if(!defaultMessage.isEmpty()){
-			fileReader = new DefaultMessageFileReader(getApplicationContext(), defaultMessage);
-			fileReader.storeFile();
-		}
-		else{
-			fileReader = new DefaultMessageFileReader(getApplicationContext(), "You haven't set a message yet!");
-			fileReader.storeFile();
-		}
-		Toast toast = Toast.makeText(getApplicationContext(),"Message Set!", 3);
+		Toast toast = Toast
+				.makeText(getApplicationContext(), "Message Set!", 3);
 		toast.setGravity(Gravity.CENTER | Gravity.CENTER, 0, 0);
 		toast.show();
 		Intent goBackHome = new Intent(this, HomeActivity.class);
